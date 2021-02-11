@@ -9,24 +9,28 @@ export default class Product extends Component {
         this.addPrice = this.addPrice.bind(this);
         }
         render() {
-        return (
-        <ProductFrame>
-        <ProductImageWrapper>
-        <ProductImage src={this.state.product.img}></ProductImage>
-        </ProductImageWrapper>
-        <ProductInfoWrapper>
-<span>{this.state.product.name}</span>
-<span>
-{this.state.product.price}{" "}
-{Number(this.state.product.price) > 2 ? "expensive" : "Promo"}
-</span>
-
-<button onClick={this.addPrice}>Add 0.1</button>
-
-</ProductInfoWrapper>
-        </ProductFrame>
-        );
-        }
+            return (
+            <ProductFrame>
+            <ProductImageWrapper>
+            <ProductImage src={this.state.product.img}></ProductImage>
+            </ProductImageWrapper>
+            <ProductInfoWrapper>
+            <span>
+            <a href={"/product/" + this.state.product.name}>
+            {this.state.product.name}
+            </a>
+            </span>
+            <span>
+            {this.state.product.price}{" "}
+            {/* {Number(this.state.product.price) > 2 ? "expensive" : "Promo"} */
+            }
+            {Number(this.state.product.price) > 2 && "expensive"}
+            </span>
+            <button onClick={this.addPrice}>Add 0.1</button>
+            </ProductInfoWrapper>
+            </ProductFrame>
+            );
+            }
         addPrice(e) {
             e.preventDefault();
             this.setState((oldState) => ({
